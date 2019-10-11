@@ -4,7 +4,8 @@ $( document ).ready(function() {
 
 
 // puts the focus on the first text box
-$("name").focus();
+$('#name').focus();
+
 console.log("set");
 
 // keeps other options hidden until 'other' is clicked
@@ -103,12 +104,15 @@ $('input[type="checkbox"]').change(function() {
     }
   });
 });
-});
+
+// uses attr to hide the option value "select method". I originally wanted to do . remove because I couldn'y figure it out but FINALLY I got it. 
+
 $('option[value="select method"]').attr('hidden', 'hidden');
 
 const creditCard = $('option[value="Credit Card"]').attr('selected','selected');
 
 console.log("apple");
+// uses .show and .hide to present the credit option as default. 
 
 $('#payment').change(function(event) {
   if ( $(this).val() === 'credit-card' ) {
@@ -127,5 +131,28 @@ $('#payment').change(function(event) {
     $('#bitcoin').show();
     $('#credit-card').hide();
     $('#paypal').hide();
-  }
-});
+
+
+
+const regexName = /^[a-zA-Z]+$/.test(nameValidation)
+
+function isValidName(){
+ 
+  const nameValidation = $('#name').val();
+
+  if ( nameValidation.length === 0 &&  regexName === false ) {
+     $('#name').css("border-color "," 3px  red");
+      return false; }
+   
+    else { $('#name').css("border-color", "3px #6F9DDC");
+   return true; }
+  } 
+
+  
+  //$('.isValidName').keyup(function(){
+    //$('#name').css('border-color','red');
+  }} );
+  
+  
+})
+console.log('cool');
