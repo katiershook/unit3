@@ -131,28 +131,27 @@ $('#payment').change(function(event) {
     $('#bitcoin').show();
     $('#credit-card').hide();
     $('#paypal').hide();
+  }} );
 
+  const nameValidation = $('#name').val();
+  const regexName = /^[a-zA-Z]+$/.test(nameValidation)
+  regEx.test(regexName.val())
 
-
-const regexName = /^[a-zA-Z]+$/.test(nameValidation)
 
 function isValidName(){
  
-  const nameValidation = $('#name').val();
-
-  if ( nameValidation.length === 0 &&  regexName === false ) {
-     $('#name').css("border-color "," 3px  red");
-      return false; }
+ if ( nameValidation === "" || regexName === false ) {
+     $('#name').css("border-color"," 3px  red");
+      return false }
    
-    else { $('#name').css("border-color", "3px #6F9DDC");
-   return true; }
+    else { $('#name').css("border-color","3px #6F9DDC");
+   return true }
   } 
 
   
   //$('.isValidName').keyup(function(){
     //$('#name').css('border-color','red');
-  }} );
+  });
   
   
-})
 console.log('cool');
