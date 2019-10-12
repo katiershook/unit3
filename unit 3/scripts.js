@@ -1,11 +1,10 @@
 $( document ).ready(function() {
- 
+
   console.log( "ready!" );
 
 
 // puts the focus on the first text box
-$('#name').focus();
-
+$("name").focus();
 console.log("set");
 
 // keeps other options hidden until 'other' is clicked
@@ -63,14 +62,14 @@ console.log(totalActivityCost)
 $('input[type="checkbox"]').change(function(event){
   const selected =$(event.target);
   const selectedCost = parseInt(selected.attr("data-cost").replace(/\D/g, '')); // uses parseInt and reg ex to turn the string into numbers
-   
+
   if (selected.is(':checked')){ // if a box is selected it shows the cost affiliated with it. If more than one box is selected it adds that cost to the total
     totalActivityCost += selectedCost;
     totalActivityCostDiv.text('Total: $' + totalActivityCost);
-    
-    
+
+
   }
-  
+
   else{
     totalActivityCost -= selectedCost; // if a box that has been selected is unselected it removes the cost of the activity
     totalActivityCostDiv.text('Total: $' + totalActivityCost);
@@ -104,22 +103,19 @@ $('input[type="checkbox"]').change(function() {
     }
   });
 });
-
-// uses attr to hide the option value "select method". I originally wanted to do . remove because I couldn'y figure it out but FINALLY I got it. 
-
+});
 $('option[value="select method"]').attr('hidden', 'hidden');
 
 const creditCard = $('option[value="Credit Card"]').attr('selected','selected');
 
 console.log("apple");
-// uses .show and .hide to present the credit option as default. 
 
 $('#payment').change(function(event) {
   if ( $(this).val() === 'credit-card' ) {
     $('#credit-card').show();
     $('#paypal').hide();
     $('#bitcoin').hide();
-    
+
   } else if ($(this).val() === 'paypal' ) 
   {
      $('#paypal').show();
@@ -131,29 +127,5 @@ $('#payment').change(function(event) {
     $('#bitcoin').show();
     $('#credit-card').hide();
     $('#paypal').hide();
-  }} );
- 
-  const nameField = $('#name');
-
-  function nameValidation(){
-      return /^[a-zA-Z]+$/.test(nameField.val());
-  };
-     
-function isValidName(){
- 
- if (!(nameField).val === "" || nameValidation(nameField).val !==  /^[a-zA-Z]+$/.test(nameField.val()) ) {
-     $('#name').css({"border": "1px solid red"})
-      return false }
-   
-    else { $('#name').css({"border": "1px solid red"});
-   return true }
-  } 
-
-
-  $('.isValidName').keyup(function(){
-    $('#name').css({"border": "1px solid red"})
-  });
+  }
 });
-  
-  
-console.log('cool');
