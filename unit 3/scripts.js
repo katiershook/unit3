@@ -56,7 +56,7 @@ let totalActivityCost = 0; // sets the cost to 0
 const totalActivityCostDiv =$('<div></div>').text("total: $"+ totalActivityCost); // creates a div and uses.text to add the total $ to the total activty cost.
 
 $('.activities').append(totalActivityCostDiv);
-console.log(totalActivityCost)
+
 
 
 $('input[type="checkbox"]').change(function(event){
@@ -88,7 +88,7 @@ $('input[type="checkbox"]').change(function() {
   const selectedName = dateSelected.attr('name');
 
   $activities.each(function() {
-    console.log("hi");
+ 
     if (
       selectedTime === $(this).attr('data-day-and-time') &&
       selectedName !== $(this).attr('name')
@@ -108,7 +108,7 @@ $('option[value="select method"]').attr('hidden', 'hidden');
 
 const creditCard = $('option[value="Credit Card"]').attr('selected','selected');
 
-console.log("apple");
+
 
 $('#payment').change(function(event) {
   if ( $(this).val() === 'credit-card' ) {
@@ -127,5 +127,38 @@ $('#payment').change(function(event) {
     $('#bitcoin').show();
     $('#credit-card').hide();
     $('#paypal').hide();
-  }
-});
+  }});
+
+
+
+  
+  function nameValidation(){
+      
+  };
+
+
+function isValidName(name){
+  
+  let nameField = $('#name').val();
+
+
+ if (nameField == "" || nameField ==" ")
+  
+
+    { $('#name').css("border" ,"1px solid red")
+    
+      return false 
+    }
+  else {
+        $('#name').css("border" ,"2px solid #6F9DDC");
+     return true  
+    }}
+    //if else  { $('#name').css({"border": "1px solid red"});
+   //return true }
+  
+
+
+  $('#name').keyup(function(){
+    isValidName()
+    // $('#name').css({"border": "1px solid red"})
+  });
