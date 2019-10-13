@@ -1,3 +1,7 @@
+// I started this project with wanting exceeds expectations but realized I don't have enough time to do that right now. I can always go back and make 
+// this project better but right now I am happy with meets expectations. 
+// unit 3. 
+
 $( document ).ready(function() {
 
   console.log( "ready!" );
@@ -79,7 +83,8 @@ $('input[type="checkbox"]').change(function(event){
 
 
 
-//watch for box to be clicked
+// uses the change function to compare the date and time of the activity selected to other activities. If there are activities for the same 
+// date and time it won't allow that box to be checked. 
 
 $('input[type="checkbox"]').change(function() {
   const dateSelected = $(this);
@@ -104,11 +109,14 @@ $('input[type="checkbox"]').change(function() {
   });
 });
 });
-$('option[value="select method"]').attr('hidden', 'hidden');
+
+/// hides the select a method option while displaying credit card first in the drop down
+$('option[value="select method"]').attr('hidden', 'hidden'); 
 
 const creditCard = $('option[value="Credit Card"]').attr('selected','selected');
 
-
+// this uses the change method to display the proper text when an option is selected. For example if we choose paypal as the payment
+// then the paypal instructions will show. 
 
 $('#payment').change(function(event) {
   if ( $(this).val() === 'credit-card' ) {
@@ -129,36 +137,91 @@ $('#payment').change(function(event) {
     $('#paypal').hide();
   }});
 
-
-
-  
-  function nameValidation(){
-      
-  };
-
+//  this function uses the || operator to determine if there is anything in the name field. After checking if there is nothing a red border will display.
+// Once something is entered the  red border should dissapear and return to the color it first was.
 
 function isValidName(name){
   
   let nameField = $('#name').val();
+   if (nameField == "" || nameField ==" ") // this says if the field is empty or has spaces then to return it false.
+    { $('#name').css("border" ,"2px solid red")
+       return false }
 
-
- if (nameField == "" || nameField ==" ")
-  
-
-    { $('#name').css("border" ,"1px solid red")
-    
-      return false 
-    }
-  else {
-        $('#name').css("border" ,"2px solid #6F9DDC");
+       else  { $('#name').css("border" ,"2px solid #6F9DDC");
      return true  
-    }}
-    //if else  { $('#name').css({"border": "1px solid red"});
-   //return true }
-  
+        }}
+   
+  // the key up function calls the isValidName function and checks in real time to ensure whats being entered into the field is true to the regex that 
+  // has been set. 
 
 
   $('#name').keyup(function(){
     isValidName()
-    // $('#name').css({"border": "1px solid red"})
+    
   });
+
+  function isValidEmail (){
+    let emailTest = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    let email = $('#mail').val();
+    if (emailTest.test(email) === false){
+      $('#mail').css("border","2px solid red");
+      return false 
+    
+    } else {
+       $('#mail').css("border","2px solid #6F9DDC");
+       return true }
+       
+  } 
+  $('#mail').keyup(function(){
+    isValidEmail() })
+
+
+
+    function isValidCc (){
+
+    let ccTest = /^[1-9][0-9]{13,17}$/
+    let cc = $('#cc-num').val();
+    if (ccTest.test(cc) === false){
+      $('#cc-num').css("border","2px solid red");
+      return false 
+    } else {  $('#cc-num').css("border","2px solid #6F9DDC");
+
+    return true }} 
+
+    $('#cc-num').keyup(function(){
+      isValidCc() })
+
+      
+
+    function isValidZip (){
+
+      let zipTest = /^\d{1,5}$/
+      let zip = $('#zip').val();
+      if (zipTest.test(zip) === false){
+        $('#zip').css("border","2px solid red");
+        return false 
+      } else {  $('#zip').css("border","2px solid #6F9DDC");
+  
+      return true }} 
+  
+      $('#zip').keyup(function(){
+        isValidZip() })
+
+        
+    function isValidCvv (){
+
+      let cvvTest = /^\d{1,3}$/
+      let cvv = $('#cvv').val();
+      if (cvvTest.test(cvv) === false){
+        $('#cvv').css("border","2px solid red");
+        return false 
+      } else {  $('#cvv').css("border","2px solid #6F9DDC");
+  
+      return true }} 
+  
+      $('#cvv').keyup(function(){
+        isValidCvv() })
+
+        console.log('ok')
+
+        
