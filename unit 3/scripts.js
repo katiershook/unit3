@@ -108,7 +108,7 @@ $('input[type="checkbox"]').change(function() {
     }
   });
 });
-});
+
 
 /// hides the select a method option while displaying credit card first in the drop down
 $('option[value="select method"]').attr('hidden', 'hidden'); 
@@ -178,8 +178,8 @@ function isValidName(name){
 
 
     function isValidCc (){
-
-    let ccTest = /^[1-9][0-9]{13,17}$/
+    
+    let ccTest = /^[1-9][0-9]{13,16}$/
     let cc = $('#cc-num').val();
     if (ccTest.test(cc) === false){
       $('#cc-num').css("border","2px solid red");
@@ -224,4 +224,29 @@ function isValidName(name){
 
         console.log('ok')
 
+        const formValidation = $('#form')
+        const 
+      
+        $('#form').submit(function() {
+         
+
+          if (isValidCvv () === 'false')
+          returnValue  === false 
+          if (isValidZip () === 'false') 
+          returnValue  === false 
+          if (isValidCc () === 'false')
+          returnValue === false 
+          if (isvalidEmail ()=== 'false')
+          returnValue === false 
+          
+          if (returnValue === false)
+          $('#form').submit(function(){
+            event.preventDefault();
+          });
+          });
+        })
+          console.log('p')
+          
+          
+          
         
