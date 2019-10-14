@@ -1,4 +1,5 @@
-
+// I started this project with wanting exceeds expectations but realized I don't have enough time to do that right now. I can always go back and make 
+// this project better but right now I am happy with meets expectations. 
 // unit 3. 
 
 $( document ).ready(function(){
@@ -7,7 +8,7 @@ $( document ).ready(function(){
 
 
 // puts the focus on the first text box
-$("name").focus();
+$("#name").focus();
 console.log("set");
 
 // keeps other options hidden until 'other' is clicked
@@ -194,7 +195,7 @@ function isValidName(name){
 
     function isValidZip() {
 
-      let zipTest = /^\d{1,5}$/
+      let zipTest = /^\d{5}$/
       let zip = $('#zip').val();
       if (zipTest.test(zip) === false){
         $('#zip').css("border","2px solid red");
@@ -211,7 +212,7 @@ function isValidName(name){
         
     function isValidCvv(){
 
-      let cvvTest = /^\d{1,3}$/
+      let cvvTest = /^\d{3}$/
       let cvv = $('#cvv').val();
       if (cvvTest.test(cvv) === false){
         $('#cvv').css("border","2px solid red");
@@ -232,16 +233,21 @@ function isValidName(name){
       
             isValidName();
             isValidEmail();
-            isvalidCc();
+            isValidCc();
             isValidZip();
             isValidCvv();
           
-            let  allGood = true
+          
+       
            
-            if (isValidCC() && isValidName() && isValidEmail() && isValidZip() &&
-              isValidCvv() === false){
-             allGood = false}
-          // if (isValidCvv() === false) {
+            if ( !isValidCc() && !isValidName() && !isValidEmail() && !isValidZip() &&
+              !isValidCvv() )
+             { return false }
+             
+               
+          
+          
+             // if (isValidCvv() === false) {
           // allGood = false; }
 
           // if (isValidZip() === false) {
@@ -252,15 +258,16 @@ function isValidName(name){
 
           // if (isvalidEmail() === false){
           // allGood = false; }
-
-          $('form').on('input-submit', function(){
-            if(allGood() === false){
+        }
+         
+         $('form').on('submit', function(event){
+            if(validateForm()===false ){
              event.preventDefault();
-            validateForm() 
+            
             }});
           
           
-          }
+         
           });
       
        
