@@ -223,9 +223,8 @@ function isValidName(name){
         isValidCvv() })
 
         console.log('ok')
-
-        const formValidation = $('#form')
-        const 
+        
+      
       
         $('#form').submit(function() {
          
@@ -244,6 +243,8 @@ function isValidName(name){
             event.preventDefault();
           });
           });
+      
+       
         })
           console.log('p')
           
