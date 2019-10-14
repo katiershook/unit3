@@ -179,7 +179,7 @@ function isValidName(name){
 
     function isValidCc (){
     
-    let ccTest = /^[1-9][0-9]{13,16}$/
+    let ccTest = /^[1-9][0-9]{12,15}$/
     let cc = $('#cc-num').val();
     if (ccTest.test(cc) === false){
       $('#cc-num').css("border","2px solid red");
@@ -227,25 +227,38 @@ function isValidName(name){
       
       
         $('#form').submit(function() {
-         
-
-          if (isValidCvv () === 'false')
-          returnValue  === false 
-          if (isValidZip () === 'false') 
-          returnValue  === false 
-          if (isValidCc () === 'false')
-          returnValue === false 
-          if (isvalidEmail ()=== 'false')
-          returnValue === false 
+      
+            isValidName(name);
+            isValidEmail();
+            isvalidCc();
+            isValidZip();
+            isValidActivities();
+            isValidCvv();
           
-          if (returnValue === false)
-          $('#form').submit(function(){
-            event.preventDefault();
+            
+            let  allgood = true
+           
+
+          if (isValidCvv () = 'false')
+            
+          if (isValidZip () = 'false') 
+          
+          if (isValidCc () = 'false')
+          
+          if (isvalidEmail () = 'false')
+         
+          $('form').on('input submit', function(){
+            if (allgoodtogo() == false){
+             event.preventDefault();
+            validateAll()
+            }});
+          
+          
           });
           });
       
        
-        })
+    
           console.log('p')
           
           
