@@ -239,16 +239,16 @@ function isValidName(name){
             let  allgood = true
            
 
-          if (isValidCvv () = 'false')
+          if (isValidCvv() = 'false')
             
-          if (isValidZip () = 'false') 
+          if (isValidZip() = 'false') 
           
-          if (isValidCc () = 'false')
+          if (isValidCc() = 'false')
           
-          if (isvalidEmail () = 'false')
+          if (isvalidEmail() = 'false')
          
           $('form').on('input submit', function(){
-            if (allgoodtogo() == false){
+            if (allgood() == false){
              event.preventDefault();
             validateAll()
             }});
