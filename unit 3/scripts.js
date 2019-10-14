@@ -2,7 +2,7 @@
 // this project better but right now I am happy with meets expectations. 
 // unit 3. 
 
-$( document ).ready(function() {
+$( document ).ready(function(){
 
   console.log( "ready!" );
 
@@ -160,7 +160,7 @@ function isValidName(name){
     
   });
 
-  function isValidEmail (){
+  function isValidEmail(){
     let emailTest = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     let email = $('#mail').val();
     if (emailTest.test(email) === false){
@@ -177,7 +177,7 @@ function isValidName(name){
 
 
 
-    function isValidCc (){
+    function isValidCc(){
     
     let ccTest = /^[1-9][0-9]{12,15}$/
     let cc = $('#cc-num').val();
@@ -193,7 +193,7 @@ function isValidName(name){
 
       
 
-    function isValidZip (){
+    function isValidZip() {
 
       let zipTest = /^\d{1,5}$/
       let zip = $('#zip').val();
@@ -202,13 +202,15 @@ function isValidName(name){
         return false 
       } else {  $('#zip').css("border","2px solid #6F9DDC");
   
-      return true }} 
+      return true 
+    }} 
   
       $('#zip').keyup(function(){
-        isValidZip() })
+        isValidZip() 
+      })
 
         
-    function isValidCvv (){
+    function isValidCvv(){
 
       let cvvTest = /^\d{1,3}$/
       let cvv = $('#cvv').val();
@@ -217,44 +219,49 @@ function isValidName(name){
         return false 
       } else {  $('#cvv').css("border","2px solid #6F9DDC");
   
-      return true }} 
+      return true 
+    }} 
   
       $('#cvv').keyup(function(){
-        isValidCvv() })
+        isValidCvv() 
+      })
 
         console.log('ok')
         
       
+        function validateForm(){
       
-        $('#form').submit(function() {
-      
-            isValidName(name);
+            isValidName();
             isValidEmail();
             isvalidCc();
             isValidZip();
-            isValidActivities();
             isValidCvv();
           
-            
-            let  allgood = true
+            let  allGood = true
            
+            if (isValidCC() && isValidName() && isValidEmail() && isValidZip() &&
+              isValidCvv() === false){
+             allGood = false}
+          // if (isValidCvv() === false) {
+          // allGood = false; }
 
-          if (isValidCvv() = 'false')
-            
-          if (isValidZip() = 'false') 
-          
-          if (isValidCc() = 'false')
-          
-          if (isvalidEmail() = 'false')
-         
-          $('form').on('input submit', function(){
-            if (allgood() == false){
+          // if (isValidZip() === false) {
+          // allGood = false; }
+
+          // if (isValidCc() === false){
+          // allGood = false; }
+
+          // if (isvalidEmail() === false){
+          // allGood = false; }
+
+          $('form').on('input-submit', function(){
+            if(allGood() === false){
              event.preventDefault();
-            validateAll()
+            validateForm() 
             }});
           
           
-          });
+          }
           });
       
        
