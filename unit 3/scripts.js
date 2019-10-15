@@ -118,19 +118,22 @@ const creditCard = $('option[value="Credit Card"]').attr('selected','selected');
 // this uses the change method to display the proper text when an option is selected. For example if we choose paypal as the payment
 // then the paypal instructions will show. 
 
-$('#payment').change(function(event) {
-  if ( $(this).val() === 'credit-card' ) {
+
+$('#payment').change(function() {
+  if ( $(this).val() === 'Credit Card' ) {
     $('#credit-card').show();
     $('#paypal').hide();
     $('#bitcoin').hide();
 
-  } else if ($(this).val() === 'paypal' ) 
+  } ;
+  if ($(this).val() === 'PayPal' ) 
   {
      $('#paypal').show();
      $('#credit-card').hide();
      $('#bitcoin').hide();
 
-  } else ($(this).val() === 'bitcoin') 
+  }; 
+  if ($(this).val() === 'Bitcoin') 
   {
     $('#bitcoin').show();
     $('#credit-card').hide();
@@ -271,9 +274,5 @@ function isValidName(name){
           });
       
        
-    
-          console.log('p')
-          
-          
-          
+
         
