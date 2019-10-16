@@ -257,8 +257,8 @@ function isValidName(name){
           
        
            
-            if ( !isValidCc() && !isValidName() && !isValidEmail() && !isValidZip() &&
-              !isValidCvv() && !isValidActivity() )
+            if ( !isValidCc() || !isValidName() || !isValidEmail() || !isValidZip() ||
+              !isValidCvv() || !isValidActivity() )
              { return false }
              
                
