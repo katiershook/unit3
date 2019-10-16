@@ -46,11 +46,15 @@ $('#colors-heart-js').hide();
 $('#design').change(function () {
   if ( $(this).val() === 'js puns' ) {
     $('#colors-js-puns').show();
-    $('#color').html('<option value="cornflowerblue"> Cornflower Blue (jS Puns shirt Only)</option><option value="darkslategrey"> Dark Slate Grey</option <option value="gold"> Gold </option>');
+    $('#color').html('<option value="cornflowerblue"> Cornflower Blue (jS Puns shirt Only)</option><option value="darkslategrey"> Dark Slate Grey</option> <option value="gold"> Gold </option>');
 
   } else if ( $(this).val () === 'heart js' ) {
     $('#colors-js-puns').show();
     $('#color').html('<option value="tomato"> Tomato (I &#9829; JS shirt only)</option><option value="steelblue"> Steel Blue (I &#9829; JS shirt only)</option><option value="dimgrey"> Dim Grey (I &#9829; JS shirt only)</option>');
+  }
+  else { ( $(this).val () === 'select method' )
+  $('#colors-js-puns').hide();
+  $('#colors-heart-js').hide();
   }
 });
 
@@ -224,6 +228,15 @@ function isValidName(name){
   
       return true 
     }} 
+    
+    function isValidActivity(){
+     if ($('input[type="checkbox"]').prop('checked')) {
+        return true
+      }
+      else {  if ($(this).attr('checked') === false)
+        return false 
+      }
+    }
   
       $('#cvv').keyup(function(){
         isValidCvv() 
@@ -239,12 +252,13 @@ function isValidName(name){
             isValidCc();
             isValidZip();
             isValidCvv();
+            isValidActivity();
           
           
        
            
             if ( !isValidCc() && !isValidName() && !isValidEmail() && !isValidZip() &&
-              !isValidCvv() )
+              !isValidCvv() && !isValidActivity() )
              { return false }
              
                
@@ -273,6 +287,4 @@ function isValidName(name){
          
           });
       
-       
-
         
