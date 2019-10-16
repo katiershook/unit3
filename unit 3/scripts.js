@@ -231,10 +231,17 @@ function isValidName(name){
      if ($('input[type="checkbox"]').prop('checked')) {
         return true
       }
-      else {  if ($(this).attr('checked') === false)
+      else {  ($(this).attr('checked') === false)
         return false 
       }
     }
+    function isCcSelected(){
+    
+      if ($('[value="Credit Card"]').is(':selected'))
+        { return true
+    } 
+    else { ($('[value="Credit Card"]').is(':selected')) }
+  }
   
       $('#cvv').keyup(function(){
         isValidCvv() 
@@ -251,6 +258,8 @@ function isValidName(name){
             isValidZip();
             isValidCvv();
             isValidActivity();
+            isCcSelected();
+
           
           
        
