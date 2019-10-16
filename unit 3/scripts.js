@@ -1,5 +1,3 @@
-// I started this project with wanting exceeds expectations but realized I don't have enough time to do that right now. I can always go back and make 
-// this project better but right now I am happy with meets expectations. 
 // unit 3. 
 
 $( document ).ready(function(){
@@ -257,10 +255,9 @@ function isValidName(name){
           
        
            
-            if ( isValidCc() || isValidName() || isValidEmail() || isValidZip() 
-               || isValidCvv() || isValidActivity() )
-             { return true }
-             else { return false}
+            if ( !isValidCc() || !isValidName() || !isValidEmail() || !isValidZip() ||
+            !isValidCvv() || !isValidActivity() )
+           { return false }
         }
              
 
@@ -290,5 +287,6 @@ function isValidName(name){
           
          
           });
+      
       
         
