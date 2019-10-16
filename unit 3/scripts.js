@@ -257,10 +257,14 @@ function isValidName(name){
           
        
            
-            if ( !isValidCc() || !isValidName() || !isValidEmail() || !isValidZip() ||
-              !isValidCvv() || !isValidActivity() )
-             { return false }
+            if ( isValidCc() || isValidName() || isValidEmail() || isValidZip() 
+               || isValidCvv() || isValidActivity() )
+             { return true }
+             else { return false}
+        }
              
+
+             console.log('lol')
                
           
           
@@ -275,10 +279,10 @@ function isValidName(name){
 
           // if (isvalidEmail() === false){
           // allGood = false; }
-        }
+        
          
          $('form').on('submit', function(event){
-            if(validateForm()===false ){
+            if(validateForm() === false ){
              event.preventDefault();
             
             }});
