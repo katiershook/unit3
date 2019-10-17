@@ -178,7 +178,8 @@ function isValidName(name){
        
   } 
   $('#mail').keyup(function(){
-    isValidEmail() })
+    isValidEmail() 
+  })
 
 
 
@@ -228,24 +229,26 @@ function isValidName(name){
     }} 
     
     function isValidActivity(){
-     if ($('input[type="checkbox"]').prop('checked')) {
-      return true
+     if ($('input[type="checkbox"]').is(':checked')) {
+     return true
       }
-      else {  ($(this).attr('checked') === false)
+      else { $('.activities legend').text(" looks like you forgot to pick an activity!").css('color', 'red');
         return false 
       }
     }
     
     function isCcSelected(){
-    
-      if ($('[value="Credit Card"]').is(':selected'))
-        { 
-         if ( isValidCc() && isValidZip() &&  isValidCvv() )
-         
-          
-         
-          return true }
-  
+   
+      let creditCard = ('[value="Credit Card"]')
+
+      if ($(creditCard).is(':selected')){
+        return true
+
+   }
+    if (creditCard === true){
+      isValidCc() || isValidCvv() || isValidZip()
+    }
+
    
 
   }
@@ -269,10 +272,10 @@ function isValidName(name){
           
           
        
-           
-            if ( !isValidName() || !isValidEmail()
-             || !isValidActivity() )
-           { return false }
+             if ( !isValidCc() || !isValidName() || !isValidEmail() || !isValidZip() ||
+             !isValidCvv() || !isValidActivity() )
+            { return false }
+         
         }
              
 
@@ -282,16 +285,8 @@ function isValidName(name){
           
            
         
-         
-         $('form').on('submit', function(event){
-            if(validateForm() === false ){
-             event.preventDefault();
-            
-            }});
-          
-          
-         
-          });
-      
-      
-        
+             $('form').on('submit', function(event){
+              if(validateForm() === false ){
+               event.preventDefault();
+              
+              }}); })
