@@ -236,7 +236,8 @@ function isValidName(name){
         return false 
       }
     }
-    
+     // this attempts to create a function that if cc is selected then cc ,cvv, zip are combined together to future validation. 
+  // my thought is that combining them into one function will keep them from neing required unless the function containg them together is called. 
     function isCcSelected(){
    
       let creditCard = ('[value="Credit Card"]')
