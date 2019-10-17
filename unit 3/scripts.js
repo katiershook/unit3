@@ -229,20 +229,31 @@ function isValidName(name){
     
     function isValidActivity(){
      if ($('input[type="checkbox"]').prop('checked')) {
-        return true
+      return true
       }
       else {  ($(this).attr('checked') === false)
         return false 
       }
     }
+    
     function isCcSelected(){
     
       if ($('[value="Credit Card"]').is(':selected'))
-        { return true
-    } 
-    else { ($('[value="Credit Card"]').is(':selected')) }
+        { 
+         if ( isValidCc() && isValidZip() &&  isValidCvv() )
+         
+          
+         {console.log('okurr')
+          return true }
+    } else if ($('[value="Bitcoin"]').is(':selected')){
+      return true 
+
+    }
+   
+
   }
   
+   
       $('#cvv').keyup(function(){
         isValidCvv() 
       })
@@ -254,18 +265,16 @@ function isValidName(name){
       
             isValidName();
             isValidEmail();
-            isValidCc();
-            isValidZip();
-            isValidCvv();
-            isValidActivity();
-            isCcSelected();
+             isValidActivity();
+             isCcSelected();
+           
 
           
           
        
            
-            if ( !isValidCc() || !isValidName() || !isValidEmail() || !isValidZip() ||
-            !isValidCvv() || !isValidActivity() )
+            if ( !isValidName() || !isValidEmail()
+             || !isValidActivity() )
            { return false }
         }
              
@@ -274,17 +283,7 @@ function isValidName(name){
                
           
           
-             // if (isValidCvv() === false) {
-          // allGood = false; }
-
-          // if (isValidZip() === false) {
-          // allGood = false; }
-
-          // if (isValidCc() === false){
-          // allGood = false; }
-
-          // if (isvalidEmail() === false){
-          // allGood = false; }
+           
         
          
          $('form').on('submit', function(event){
