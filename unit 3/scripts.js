@@ -243,12 +243,9 @@ function isValidName(name){
          if ( isValidCc() && isValidZip() &&  isValidCvv() )
          
           
-         {console.log('okurr')
+         
           return true }
-    } else if ($('[value="Bitcoin"]').is(':selected')){
-      return true 
-
-    }
+  
    
 
   }
