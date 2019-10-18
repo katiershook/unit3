@@ -1,3 +1,4 @@
+
 // unit 3. 
 
 $( document ).ready(function(){
@@ -216,68 +217,60 @@ function isValidName(name){
       })
 
         
-    function isValidCvv(){
+      function isValidCvv(){
 
-      let cvvTest = /^\d{3}$/
-      let cvv = $('#cvv').val();
-      if (cvvTest.test(cvv) === false){
-        $('#cvv').css("border","2px solid red");
-        return false 
-      } else {  $('#cvv').css("border","2px solid #6F9DDC");
-  
-      return true 
-    }}
-     $('#cvv').keyup(function(){
-      isValidCvv() 
-    }) 
+        let cvvTest = /^\d{3}$/
+        let cvv = $('#cvv').val();
+        if (cvvTest.test(cvv) === false){
+          $('#cvv').css("border","2px solid red");
+          return false 
+        } else {  $('#cvv').css("border","2px solid #6F9DDC");
     
-    function isValidActivity(){
-     if ($('input[type="checkbox"]').is(':checked')) {
-     return true
+        return true 
+      }} 
+      
+      function isValidActivity(){
+       if ($('input[type="checkbox"]').is(':checked')) {
+       return true
+        }
+        else { $('.activities legend').text(" looks like you forgot to pick an activity!").css('color', 'red');
+          return false 
+        }
       }
-      else { $('.activities legend').text(" looks like you forgot to pick an activity!").css('color', 'red');
-        return false 
-      }
+       // this attempts to create a function that if cc is selected then cc ,cvv, zip are combined together to future validation. 
+    // my thought is that combining them into one function will keep them from neing required unless the function containg them together is called. 
+      function isCcSelected(){
+     
+        let creditCard = ('[value="Credit Card"]')
+        let bitcoin = ('[value="Bitcoin"]')
+        let paypal = ('[value="PayPal"]')
+  
+        if ($(creditCard).is(':selected')){
+          return isValidCc() && isValidZip() && isValidCvv() 
+        } else if ($(bitcoin).is(':selected')){
+          return true
+        } else if ($(paypal).is(':selected')){
+          return true
+        }
     }
     
-   
-
-    $('form').on('submit', function(e){
-      if (isValidName === false){
-        e.preventDefault(); }
-
-      
-         // prevent the form from submitting
-      if (isValidEmail() === false) {
-        e.preventDefault();
-      }
-        //  prevent the form from submitting
-      if (isValidActivity() === false ) {
-        e.preventDefault();
-      }
-        //  prevent the form from submitting
-      if ($('#payment').val() === ('credit card'))
-      
-           if (isValidCc()=== false) {
-           e.preventDefault() }
-         //     prevent the form from submitting
-           if (isValidZip()=== false) {
-            e.preventDefault();
-           }
-           //   prevent the form from submitting
-           if (isValidCvv() === false)  {
-            e.preventDefault();
-           }
-            //  prevent the form from submitting
-  });
- // Note how the Credit Card related validation is nested within a conditional that checks if Credit Card is the selected method of payment.
-
-  
-  
-   
-    
-        console.log('ok')
+        $('#cvv').keyup(function(){
+          isValidCvv() 
+        })
+          
         
-      
-       
- }); 
+        function validateForm(){
+            isValidName();
+            isValidEmail();
+            isValidActivity();
+            isCcSelected();
+          
+              if ( !isValidName() || !isValidEmail() || !isValidActivity() || !isCcSelected())
+            { return false }
+        }
+               
+        $('form').on('submit', function(event){
+        if(validateForm() === false ){
+          event.preventDefault();
+        
+        }}); })
