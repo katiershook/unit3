@@ -226,7 +226,10 @@ function isValidName(name){
       } else {  $('#cvv').css("border","2px solid #6F9DDC");
   
       return true 
-    }} 
+    }}
+     $('#cvv').keyup(function(){
+      isValidCvv() 
+    }) 
     
     function isValidActivity(){
      if ($('input[type="checkbox"]').is(':checked')) {
@@ -236,58 +239,45 @@ function isValidName(name){
         return false 
       }
     }
-     // this attempts to create a function that if cc is selected then cc ,cvv, zip are combined together to future validation. 
-  // my thought is that combining them into one function will keep them from neing required unless the function containg them together is called. 
-    function isCcSelected(){
-   
-      let creditCard = ('[value="Credit Card"]')
-
-      if ($(creditCard).is(':selected')){
-        return true
-
-   }
-    if (creditCard === true){
-      isValidCc() || isValidCvv() || isValidZip()
-    }
-
+    
    
 
-  }
+    $('form').on('submit', function(e){
+      if (isValidName === false){
+        e.preventDefault(); }
+
+      
+         // prevent the form from submitting
+      if (isValidEmail() === false) {
+        e.preventDefault();
+      }
+        //  prevent the form from submitting
+      if (isValidActivity() === false ) {
+        e.preventDefault();
+      }
+        //  prevent the form from submitting
+      if ($('#payment').val() === ('credit card'))
+      
+           if (isValidCc()=== false) {
+           e.preventDefault() }
+         //     prevent the form from submitting
+           if (isValidZip()=== false) {
+            e.preventDefault();
+           }
+           //   prevent the form from submitting
+           if (isValidCvv() === false)  {
+            e.preventDefault();
+           }
+            //  prevent the form from submitting
+  });
+ // Note how the Credit Card related validation is nested within a conditional that checks if Credit Card is the selected method of payment.
+
+  
   
    
-      $('#cvv').keyup(function(){
-        isValidCvv() 
-      })
-
+    
         console.log('ok')
         
       
-        function validateForm(){
-      
-            isValidName();
-            isValidEmail();
-             isValidActivity();
-             isCcSelected();
-           
-
-          
-          
        
-             if ( !isValidCc() || !isValidName() || !isValidEmail() || !isValidZip() ||
-             !isValidCvv() || !isValidActivity() )
-            { return false }
-         
-        }
-             
-
-             console.log('lol')
-               
-          
-          
-           
-        
-             $('form').on('submit', function(event){
-              if(validateForm() === false ){
-               event.preventDefault();
-              
-              }}); })
+ }); 
