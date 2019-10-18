@@ -200,21 +200,20 @@ function isValidName(name){
 
       
 
-    function isValidZip() {
+      function isValidZip (){
 
-      let zipTest = /^\d{5}$/
-      let zip = $('#zip').val();
-      if (zipTest.test(zip) === false){
-        $('#zip').css("border","2px solid red");
-        return false 
-      } else {  $('#zip').css("border","2px solid #6F9DDC");
-  
-      return true 
-    }} 
-  
-      $('#zip').keyup(function(){
-        isValidZip() 
-      })
+        let zipTest = /^\d{5}$/
+        let zip = $('#zip').val();
+        if (zipTest.test(zip) === false){
+          $('#zip').css("border","2px solid red");
+          return false 
+        } else {  $('#zip').css("border","2px solid #6F9DDC");
+    
+        return true }} 
+    
+        $('#zip').keyup(function(){
+          isValidZip() })
+    
 
         
       function isValidCvv(){
@@ -222,12 +221,16 @@ function isValidName(name){
         let cvvTest = /^\d{3}$/
         let cvv = $('#cvv').val();
         if (cvvTest.test(cvv) === false){
-          $('#cvv').css("border","2px solid red");
+          $('#cvv').css("border","2px solid red")
           return false 
         } else {  $('#cvv').css("border","2px solid #6F9DDC");
     
         return true 
       }} 
+      $('#cvv').keyup(function(){
+        isValidCvv() 
+      })
+        
       
       function isValidActivity(){
        if ($('input[type="checkbox"]').is(':checked')) {
@@ -254,16 +257,15 @@ function isValidName(name){
         }
     }
     
-        $('#cvv').keyup(function(){
-          isValidCvv() 
-        })
-          
+     
         
         function validateForm(){
             isValidName();
             isValidEmail();
             isValidActivity();
             isCcSelected();
+            isValidZip();
+            isValidCvv();
           
               if ( !isValidName() || !isValidEmail() || !isValidActivity() || !isCcSelected())
             { return false }
