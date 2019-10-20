@@ -114,13 +114,14 @@ $('input[type="checkbox"]').change(function() {
 
 
 /// hides the select a method option while displaying credit card first in the drop down
-$('option[value="select method"]').attr('hidden', 'hidden'); 
 
 const creditCard = $('option[value="Credit Card"]').attr('selected','selected');
 
 // this uses the change method to display the proper text when an option is selected. For example if we choose paypal as the payment
 // then the paypal instructions will show. 
 
+$('#paypal').hide();
+$('#bitcoin').hide();
 
 $('#payment').change(function() {
   if ( $(this).val() === 'Credit Card' ) {
